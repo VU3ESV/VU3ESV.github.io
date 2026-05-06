@@ -1,0 +1,227 @@
+:root {
+  --fg: #111;
+  --fg-soft: #444;
+  --muted: #777;
+  --bg: #fafafa;
+  --card: #fff;
+  --line: #e5e5e5;
+  --accent: #b00020;
+  --link: #0b5fff;
+  --max: 880px;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  color: var(--fg);
+  background: var(--bg);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- Header / nav ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  background: rgba(250,250,250,0.92);
+  backdrop-filter: saturate(160%) blur(8px);
+  border-bottom: 1px solid var(--line);
+  z-index: 10;
+}
+
+.nav {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav .brand {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.nav ul a {
+  color: var(--fg-soft);
+  font-size: 14px;
+}
+
+.nav ul a:hover { color: var(--fg); text-decoration: none; }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 56px 24px 24px;
+}
+
+.hero h1 {
+  font-family: var(--mono);
+  font-size: clamp(48px, 9vw, 96px);
+  letter-spacing: 0.02em;
+  margin: 0;
+  line-height: 1;
+}
+
+.hero .tagline {
+  font-family: var(--mono);
+  color: var(--muted);
+  margin: 8px 0 24px;
+  font-size: 14px;
+}
+
+.hero .meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px 24px;
+  font-size: 14px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+
+.hero .meta li span {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.hero .meta em[data-edit] {
+  font-style: normal;
+  color: var(--accent);
+  border-bottom: 1px dashed var(--accent);
+}
+
+/* ---------- Cards ---------- */
+
+main {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 8px 24px 64px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px;
+  margin: 24px 0;
+}
+
+.card h2 {
+  font-size: 20px;
+  margin: 0 0 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.card h2 .num {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+.card h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 18px 0 6px;
+}
+
+.card p { margin: 0 0 12px; color: var(--fg-soft); }
+.card ul { margin: 0 0 8px; padding-left: 20px; color: var(--fg-soft); }
+.card ul li { margin: 2px 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Project list ---------- */
+
+.projects {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+}
+
+.projects li {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.projects li:last-child { border-bottom: 0; }
+
+.projects a strong { font-size: 15px; color: var(--fg); }
+.projects span { font-size: 14px; color: var(--fg-soft); }
+.projects .tags {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Misc ---------- */
+
+.links { list-style: none; padding: 0; }
+.links li { padding: 4px 0; }
+.muted { color: var(--muted); font-size: 14px; }
+
+footer {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 24px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+footer .seventy-three {
+  font-size: 24px;
+  color: var(--fg);
+  margin: 8px 0 0;
+  letter-spacing: 0.1em;
+}

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LB9KJ · Amateur Radio Station</title>
+  <meta name="description" content="LB9KJ — amateur radio station, Haugesund, Norway. Also active as VU3ESV from Bangalore, India." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26' font-family='monospace'%3E%F0%9F%93%A1%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#top">LB9KJ</a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#station">Station</a></li>
+        <li><a href="#log">Log</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#vu3esv">VU3ESV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1>LB9KJ</h1>
+      <p class="tagline">QRV · Haugesund, Norway</p>
+      <ul class="meta">
+        <li><span>Operator</span> <em data-edit>your name</em></li>
+        <li><span>Locator</span> <em data-edit>JOxxxx</em></li>
+        <li><span>ITU / CQ</span> 18 / 14</li>
+        <li><span>QSL</span> LOTW only</li>
+        <li><span>Also QRV</span> VU3ESV (Bangalore, IN)</li>
+      </ul>
+    </section>
+
+    <section id="about" class="card">
+      <h2><span class="num">01</span> About</h2>
+      <p>
+        LB9KJ is the Norwegian callsign of an amateur radio operator originally licensed in India as
+        <a href="#vu3esv">VU3ESV</a>. The station operates from Haugesund on the south-west coast of Norway,
+        with a second active station in Bangalore. Operating interests are HF DX on CW, SSB and the digital
+        modes (FT8 / FT4 / Q65), with a strong technical bent toward radio automation, SDR tooling and
+        Kenwood / FlexRadio integration — most of which is open-sourced on
+        <a href="https://github.com/VU3ESV" rel="noopener">GitHub</a>.
+      </p>
+      <p>
+        QSLs are confirmed exclusively via <strong>Logbook of The World</strong>. No bureau, no paper.
+      </p>
+    </section>
+
+    <section id="station" class="card">
+      <h2><span class="num">02</span> Station</h2>
+      <div class="grid">
+        <div>
+          <h3>Radios</h3>
+          <ul>
+            <li>FlexRadio FLEX-6600 (SDR, primary)</li>
+            <li>Kenwood TS-990SP (VU3ESV shack)</li>
+          </ul>
+          <h3>Antennas</h3>
+          <ul>
+            <li>Multiband HF — wire / vertical</li>
+            <li>VHF / UHF — vertical</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Modes</h3>
+          <ul>
+            <li>SSB · CW · FT8 · FT4 · Q65</li>
+          </ul>
+          <h3>Bands</h3>
+          <ul>
+            <li>160 m – 6 m HF</li>
+            <li>2 m / 70 cm</li>
+          </ul>
+          <h3>Automation</h3>
+          <ul>
+            <li>Node-RED back-end for radio control</li>
+            <li>ESP32 band decoder driving LPF relays</li>
+            <li>TCI bridge to FlexRadio</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="log" class="card">
+      <h2><span class="num">03</span> Log &amp; QSL</h2>
+      <p>
+        All confirmed QSOs are uploaded to <strong>LOTW</strong> shortly after each operating session.
+        The preferred — and only — confirmation route is LOTW. Please do not send paper cards or
+        bureau requests; they will not be answered.
+      </p>
+      <ul class="links">
+        <li><a href="https://www.qrz.com/db/LB9KJ" rel="noopener">QRZ · LB9KJ</a></li>
+        <li><a href="https://www.qrz.com/db/VU3ESV" rel="noopener">QRZ · VU3ESV</a></li>
+      </ul>
+    </section>
+
+    <section id="projects" class="card">
+      <h2><span class="num">04</span> Projects</h2>
+      <p>Open-source ham-radio tooling published on GitHub:</p>
+      <ul class="projects">
+        <li>
+          <a href="https://github.com/VU3ESV/TCILibrary" rel="noopener"><strong>TCILibrary</strong></a>
+          <span>C# implementation of the Expert Electronics TCI protocol — talks to FlexRadio / SunSDR.</span>
+          <span class="tags">C# · TCI · SDR</span>
+        </li>
+        <li>
+          <a href="https://github.com/VU3ESV/KenwoodTCPServer" rel="noopener"><strong>KenwoodTCPServer</strong></a>
+          <span>TCP server that fronts the Kenwood TS-990 / TS-890 serial interface, so any networked client can drive the radio.</span>
+          <span class="tags">.NET · CAT · Kenwood</span>
+        </li>
+        <li>
+          <a href="https://github.com/VU3ESV/ESP32-BAND-DECODER" rel="noopener"><strong>ESP32 Band Decoder</strong></a>
+          <span>ESP32 firmware that reads the live band from a Kenwood radio (via the Node-RED TCP server) and switches LPF relays accordingly.</span>
+          <span class="tags">ESP32 · C++ · Hardware</span>
+        </li>
+        <li>
+          <a href="https://github.com/VU3ESV/KENWOOD-TCP-SERVER--NODE-RED" rel="noopener"><strong>Kenwood TCP Server (Node-RED)</strong></a>
+          <span>Node-RED flow that exposes the Kenwood CAT stream over TCP for downstream automation.</span>
+          <span class="tags">Node-RED · MQTT</span>
+        </li>
+        <li>
+          <a href="https://github.com/VU3ESV/ESP32WifiMacAddressFinder" rel="noopener"><strong>ESP32 Wi-Fi MAC Finder</strong></a>
+          <span>Small C++ utility for ESP32 device provisioning.</span>
+          <span class="tags">ESP32 · C++</span>
+        </li>
+        <li>
+          <a href="https://github.com/VU3ESV/pihpsdr" rel="noopener"><strong>pihpsdr (fork)</strong></a>
+          <span>Personal fork of John Melton's pihpsdr — Raspberry Pi front-end for HPSDR / Hermes Lite radios.</span>
+          <span class="tags">C · Linux · SDR</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="vu3esv" class="card">
+      <h2><span class="num">05</span> VU3ESV — sister station</h2>
+      <p>
+        When not in Norway, the same operator is QRV from <strong>Bangalore, India</strong> as
+        <a href="https://www.qrz.com/db/VU3ESV" rel="noopener">VU3ESV</a>. The Bangalore shack is built
+        around a <strong>Kenwood TS-990SP</strong> with the home-grown Node-RED / ESP32 automation stack
+        listed above. QSL policy is identical: <strong>LOTW only</strong>.
+      </p>
+    </section>
+
+    <section id="contact" class="card">
+      <h2><span class="num">06</span> Contact</h2>
+      <ul class="links">
+        <li><a href="https://www.qrz.com/db/LB9KJ" rel="noopener">qrz.com/db/LB9KJ</a></li>
+        <li><a href="https://www.qrz.com/db/VU3ESV" rel="noopener">qrz.com/db/VU3ESV</a></li>
+        <li><a href="https://github.com/VU3ESV" rel="noopener">github.com/VU3ESV</a></li>
+      </ul>
+      <p class="muted">
+        For sked requests, technical questions about the projects above, or remote-shack discussion,
+        the QRZ contact form is the most reliable route.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>LB9KJ · Haugesund, Norway &nbsp;·&nbsp; VU3ESV · Bangalore, India</p>
+    <p class="seventy-three">73</p>
+  </footer>
+</body>
+</html>
