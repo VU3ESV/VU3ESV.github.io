@@ -1,96 +1,85 @@
 {
-  "updated_iso": "2026-05-08T07:22:23Z",
+  "updated_iso": "2026-05-08T08:53:20Z",
   "spotter": "LB9KJ",
   "max_age_minutes": 15,
-  "count": 8,
+  "count": 7,
   "spots": [
     {
-      "id": 2248623956,
+      "id": 2248641987,
       "spotter": "LB9KJ",
-      "freq": 7024.0,
-      "dx": "PA3BYW",
-      "snr": 7,
-      "wpm": 22,
-      "time": "0720z 08 May",
-      "epoch": 1778224802,
-      "band": "40m"
-    },
-    {
-      "id": 2248623813,
-      "spotter": "LB9KJ",
-      "freq": 7024.0,
-      "dx": "PA3BYW",
-      "snr": 8,
-      "wpm": 21,
-      "time": "0719z 08 May",
-      "epoch": 1778224741,
-      "band": "40m"
-    },
-    {
-      "id": 2248623689,
-      "spotter": "LB9KJ",
-      "freq": 10119.6,
-      "dx": "F5TO",
-      "snr": 5,
-      "wpm": 23,
-      "time": "0718z 08 May",
-      "epoch": 1778224680,
-      "band": "30m"
-    },
-    {
-      "id": 2248623618,
-      "spotter": "LB9KJ",
-      "freq": 14025.0,
-      "dx": "DF7TV",
-      "snr": 7,
+      "freq": 18075.8,
+      "dx": "RP81U",
+      "snr": 6,
       "wpm": 25,
-      "time": "0717z 08 May",
-      "epoch": 1778224660,
-      "band": "20m"
+      "time": "0852z 08 May",
+      "epoch": 1778230340,
+      "band": "17m"
     },
     {
-      "id": 2248623452,
-      "spotter": "LB9KJ",
-      "freq": 7025.0,
-      "dx": "DL0MFH",
-      "snr": 18,
-      "wpm": 22,
-      "time": "0717z 08 May",
-      "epoch": 1778224629,
-      "band": "40m"
-    },
-    {
-      "id": 2248623451,
-      "spotter": "LB9KJ",
-      "freq": 7025.0,
-      "dx": "DL0MFH",
-      "snr": 19,
-      "wpm": 22,
-      "time": "0717z 08 May",
-      "epoch": 1778224629,
-      "band": "40m"
-    },
-    {
-      "id": 2248623261,
-      "spotter": "LB9KJ",
-      "freq": 7020.2,
-      "dx": "SM4T",
-      "snr": 4,
-      "wpm": 20,
-      "time": "0715z 08 May",
-      "epoch": 1778224558,
-      "band": "40m"
-    },
-    {
-      "id": 2248622201,
+      "id": 2248641194,
       "spotter": "LB9KJ",
       "freq": 14014.0,
       "dx": "LZ100LZ",
-      "snr": 3,
+      "snr": 5,
       "wpm": 30,
-      "time": "0708z 08 May",
-      "epoch": 1778224100,
+      "time": "0848z 08 May",
+      "epoch": 1778230126,
       "band": "20m"
+    },
+    {
+      "id": 2248641020,
+      "spotter": "LB9KJ",
+      "freq": 14014.0,
+      "dx": "LZ100LZ",
+      "snr": 7,
+      "wpm": 30,
+      "time": "0848z 08 May",
+      "epoch": 1778230086,
+      "band": "20m"
+    },
+    {
+      "id": 2248640951,
+      "spotter": "LB9KJ",
+      "freq": 7027.1,
+      "dx": "G4HOM",
+      "snr": 4,
+      "wpm": 23,
+      "time": "0847z 08 May",
+      "epoch": 1778230055,
+      "band": "40m"
+    },
+    {
+      "id": 2248640342,
+      "spotter": "LB9KJ",
+      "freq": 18075.8,
+      "dx": "RP81UU",
+      "snr": 4,
+      "wpm": 25,
+      "time": "0843z 08 May",
+      "epoch": 1778229821,
+      "band": "17m"
+    },
+    {
+      "id": 2248640073,
+      "spotter": "LB9KJ",
+      "freq": 14025.0,
+      "dx": "DF7TV",
+      "snr": 5,
+      "wpm": 29,
+      "time": "0842z 08 May",
+      "epoch": 1778229729,
+      "band": "20m"
+    },
+    {
+      "id": 2248639188,
+      "spotter": "LB9KJ",
+      "freq": 10115.0,
+      "dx": "EV81OB",
+      "snr": 10,
+      "wpm": 33,
+      "time": "0838z 08 May",
+      "epoch": 1778229516,
+      "band": "30m"
     }
   ]
 }
