@@ -1,8 +1,8 @@
 {
-  "updated_iso": "2026-05-08T05:53:42Z",
+  "updated_iso": "2026-05-08T05:55:28Z",
   "spotter": "LB9KJ",
   "max_age_minutes": 15,
-  "count": 19,
+  "count": 15,
   "spots": [
     {
       "id": 2248610156,
@@ -167,50 +167,6 @@
       "wpm": 26,
       "time": "0542z 08 May",
       "epoch": 1778218955,
-      "band": "40m"
-    },
-    {
-      "id": 2248608093,
-      "spotter": "LB9KJ",
-      "freq": 7026.0,
-      "dx": "DJ4GX",
-      "snr": 12,
-      "wpm": 32,
-      "time": "0540z 08 May",
-      "epoch": 1778218802,
-      "band": "40m"
-    },
-    {
-      "id": 2248608071,
-      "spotter": "LB9KJ",
-      "freq": 7013.0,
-      "dx": "3Z75HSC",
-      "snr": 24,
-      "wpm": 24,
-      "time": "0539z 08 May",
-      "epoch": 1778218792,
-      "band": "40m"
-    },
-    {
-      "id": 2248608070,
-      "spotter": "LB9KJ",
-      "freq": 7013.0,
-      "dx": "3Z75HSC",
-      "snr": 24,
-      "wpm": 25,
-      "time": "0539z 08 May",
-      "epoch": 1778218792,
-      "band": "40m"
-    },
-    {
-      "id": 2248608036,
-      "spotter": "LB9KJ",
-      "freq": 7026.0,
-      "dx": "DJ4GX",
-      "snr": 11,
-      "wpm": 32,
-      "time": "0539z 08 May",
-      "epoch": 1778218781,
       "band": "40m"
     }
   ]
