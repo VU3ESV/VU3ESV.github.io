@@ -3,110 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#070a0d">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#faf6ed">
 <title>LB9KJ · VU3ESV — Amateur Radio Station</title>
 <meta name="description" content="Amateur radio station LB9KJ (Haugesund, Norway) and VU3ESV (Bangalore, India). FlexRadio FLEX-6600, Kenwood TS-990S, LOTW only.">
 <meta property="og:title" content="LB9KJ · VU3ESV — Amateur Radio Station">
 <meta property="og:description" content="Dual-station amateur radio operation. Haugesund, Norway and Bangalore, India. SDR, CAT automation, LOTW only.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vu3esv.github.io">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23070a0d'/%3E%3Ctext x='50%25' y='62%25' text-anchor='middle' font-family='monospace' font-size='14' font-weight='600' fill='%235eead4'%3EQRV%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23faf6ed'/%3E%3Ctext x='50%25' y='62%25' text-anchor='middle' font-family='monospace' font-size='13' font-weight='600' fill='%23c4711d'%3EQRV%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="bg-grid" aria-hidden="true"></div>
-<div class="bg-glow" aria-hidden="true"></div>
-
 <header class="site-header">
-  <a class="brand" href="#top" aria-label="Home">
-    <span class="brand-mark" aria-hidden="true"></span>
-    <span class="brand-call">LB9KJ</span>
-    <span class="brand-sep">·</span>
-    <span class="brand-call alt">VU3ESV</span>
-  </a>
-  <nav class="site-nav" aria-label="Primary">
-    <a href="#about">About</a>
-    <a href="#station">Station</a>
-    <a href="#log">Log</a>
-    <a href="#projects">Projects</a>
-    <a href="#vu3esv">VU3ESV</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="header-inner">
+    <a class="brand" href="#top" aria-label="Home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-call">LB9KJ</span>
+      <span class="brand-sep">·</span>
+      <span class="brand-call alt">VU3ESV</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#station">Station</a>
+      <a href="#log">Log</a>
+      <a href="#projects">Projects</a>
+      <a href="#vu3esv">VU3ESV</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
 <main id="main">
 
 <section class="hero" id="top">
-  <div class="hero-scope">
-    <span class="corner tl" aria-hidden="true"></span>
-    <span class="corner tr" aria-hidden="true"></span>
-    <span class="corner bl" aria-hidden="true"></span>
-    <span class="corner br" aria-hidden="true"></span>
-
-    <div class="hero-status">
-      <span class="pulse" aria-hidden="true"></span>
-      <span>QRV · Haugesund</span>
-      <span class="hero-status-sep" aria-hidden="true"></span>
-      <span>14.074 MHz</span>
-    </div>
-
-    <h1 class="hero-call">LB9KJ</h1>
-    <p class="hero-name"><em data-edit>Vinod Nair</em></p>
-    <p class="hero-meta">
-      <span data-edit>JO29QJ</span>
-      <span class="dim">·</span>
-      <span>Haugesund, Norway</span>
-      <span class="dim">·</span>
-      <span>ITU 18 / CQ 14</span>
-    </p>
-
-    <div class="spectrum" aria-hidden="true">
-      <span style="--h:18%"></span><span style="--h:34%"></span><span style="--h:62%"></span>
-      <span style="--h:48%"></span><span style="--h:80%"></span><span style="--h:55%"></span>
-      <span style="--h:30%"></span><span style="--h:70%"></span><span style="--h:92%"></span>
-      <span style="--h:65%"></span><span style="--h:42%"></span><span style="--h:22%"></span>
-      <span style="--h:36%"></span><span style="--h:58%"></span><span style="--h:74%"></span>
-      <span style="--h:48%"></span><span style="--h:84%"></span><span style="--h:60%"></span>
-      <span style="--h:38%"></span><span style="--h:24%"></span><span style="--h:50%"></span>
-      <span style="--h:72%"></span><span style="--h:44%"></span><span style="--h:30%"></span>
-    </div>
-
-    <div class="hero-tags">
-      <span class="tag tag-cyan">FLEX-6600 · TS-990S</span>
-      <span class="tag tag-amber">LOTW only</span>
-      <span class="tag tag-cyan">SSB · CW · Digital</span>
-      <span class="tag tag-rose">Sister stn VU3ESV</span>
-    </div>
+  <div class="hero-status">
+    <span class="pulse" aria-hidden="true"></span>
+    <span>QRV · Haugesund</span>
   </div>
 
-  <div class="hero-readouts">
-    <div class="readout">
-      <span class="readout-key">PRIMARY</span>
-      <span class="readout-val">FLEX-6600</span>
-      <span class="readout-sub">SDR · Norway</span>
-    </div>
-    <div class="readout">
-      <span class="readout-key">SISTER</span>
-      <span class="readout-val">TS-990S</span>
-      <span class="readout-sub">Bangalore</span>
-    </div>
-    <div class="readout">
-      <span class="readout-key">BANDS</span>
-      <span class="readout-val">160 m – 70 cm</span>
-      <span class="readout-sub">HF · VHF · UHF</span>
-    </div>
+  <h1 class="hero-call">LB9KJ <span class="hero-and">/</span> VU3ESV</h1>
+  <p class="hero-name">Operator: <em data-edit>Vinod Nair</em></p>
+  <p class="hero-meta">
+    <span data-edit>JO29QJ</span>
+    <span class="dim">·</span>
+    <span>Haugesund, Norway</span>
+    <span class="dim">·</span>
+    <span>ITU 18 / CQ 14</span>
+  </p>
+  <p class="hero-lead">
+    Amateur radio station operating from Haugesund, Norway as <strong>LB9KJ</strong>,
+    and from Bangalore, India as <strong>VU3ESV</strong>. HF DX on CW, SSB and the
+    digital modes. SDR, CAT automation, and Kenwood / FlexRadio integration —
+    open-sourced on <a href="https://github.com/VU3ESV" target="_blank" rel="noopener">GitHub</a>.
+  </p>
+
+  <div class="hero-tags">
+    <span class="tag">FLEX-6600 · TS-990S</span>
+    <span class="tag tag-amber">LOTW only</span>
+    <span class="tag">SSB · CW · Digital</span>
+    <span class="tag">Sister stn VU3ESV</span>
   </div>
 </section>
 
 <section id="about">
-  <div class="section-label"><span class="bracket">[</span> 01 <span class="slash">/</span> ABOUT <span class="bracket">]</span></div>
+  <div class="section-label">01 · About</div>
   <h2>The Station</h2>
   <div class="grid-2">
     <div class="prose">
@@ -114,7 +81,7 @@
       <p>Operating interests are HF DX on CW, SSB and the digital modes (FT8 / FT4 / FT2), with a strong technical bent toward radio automation, SDR tooling and Kenwood / FlexRadio integration — most of which is open-sourced on <a href="https://github.com/VU3ESV" target="_blank" rel="noopener">GitHub</a>.</p>
       <p>QSLs are confirmed exclusively via <strong>Logbook of The World</strong>. No bureau, no paper.</p>
     </div>
-    <div>
+    <aside>
       <dl class="datasheet">
         <div><dt>Callsign</dt><dd>LB9KJ</dd></div>
         <div><dt>Operator</dt><dd data-edit>Vinod Nair</dd></div>
@@ -130,50 +97,60 @@
         <a class="chip" href="https://www.qrz.com/db/VU3ESV" target="_blank" rel="noopener">QRZ · VU3ESV</a>
         <a class="chip" href="https://github.com/VU3ESV" target="_blank" rel="noopener">GitHub</a>
       </div>
-    </div>
+    </aside>
   </div>
 </section>
 
 <section id="station">
-  <div class="section-label"><span class="bracket">[</span> 02 <span class="slash">/</span> STATION <span class="bracket">]</span></div>
+  <div class="section-label">02 · Station</div>
   <h2>Equipment</h2>
   <div class="grid-2">
     <div>
       <div class="kit">
-        <div class="kit-title">Radios</div>
-        <div class="kit-item">FlexRadio FLEX-6600 <span class="kit-note">SDR · Norway primary</span></div>
-        <div class="kit-item">Kenwood TS-990S <span class="kit-note">VU3ESV · Bangalore</span></div>
+        <h3 class="kit-title">Radios</h3>
+        <ul class="kit-list">
+          <li>FlexRadio FLEX-6600 <span class="kit-note">SDR · Norway primary</span></li>
+          <li>Kenwood TS-990S <span class="kit-note">VU3ESV · Bangalore</span></li>
+        </ul>
       </div>
       <div class="kit">
-        <div class="kit-title">Antennas</div>
-        <div class="kit-item">Multiband HF <span class="kit-note">wire / vertical</span></div>
-        <div class="kit-item">VHF / UHF <span class="kit-note">vertical</span></div>
+        <h3 class="kit-title">Antennas</h3>
+        <ul class="kit-list">
+          <li>Multiband HF <span class="kit-note">wire / vertical</span></li>
+          <li>VHF / UHF <span class="kit-note">vertical</span></li>
+        </ul>
       </div>
       <div class="kit">
-        <div class="kit-title">Bands</div>
-        <div class="kit-item">160 m – 6 m HF</div>
-        <div class="kit-item">2 m / 70 cm</div>
+        <h3 class="kit-title">Bands</h3>
+        <ul class="kit-list">
+          <li>160 m – 6 m HF</li>
+          <li>2 m / 70 cm</li>
+        </ul>
       </div>
     </div>
     <div>
       <div class="kit">
-        <div class="kit-title">Modes</div>
-        <div class="kit-item">SSB</div>
-        <div class="kit-item">CW</div>
-        <div class="kit-item">FT8 · FT4 · FT2</div>
+        <h3 class="kit-title">Modes</h3>
+        <ul class="kit-list">
+          <li>SSB</li>
+          <li>CW</li>
+          <li>FT8 · FT4 · FT2</li>
+        </ul>
       </div>
       <div class="kit">
-        <div class="kit-title">Automation</div>
-        <div class="kit-item">Node-RED back-end <span class="kit-note">radio control</span></div>
-        <div class="kit-item">ESP32 band decoder <span class="kit-note">drives LPF relays</span></div>
-        <div class="kit-item">TCI bridge <span class="kit-note">FlexRadio</span></div>
+        <h3 class="kit-title">Automation</h3>
+        <ul class="kit-list">
+          <li>Node-RED back-end <span class="kit-note">radio control</span></li>
+          <li>ESP32 band decoder <span class="kit-note">drives LPF relays</span></li>
+          <li>TCI bridge <span class="kit-note">FlexRadio</span></li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
 <section id="log">
-  <div class="section-label"><span class="bracket">[</span> 03 <span class="slash">/</span> LOGBOOK <span class="bracket">]</span></div>
+  <div class="section-label">03 · Logbook</div>
   <h2>Log &amp; QSL</h2>
   <div class="grid-2">
     <div class="prose">
@@ -195,11 +172,11 @@
 </section>
 
 <section id="projects">
-  <div class="section-label"><span class="bracket">[</span> 04 <span class="slash">/</span> PROJECTS <span class="bracket">]</span></div>
+  <div class="section-label">04 · Projects</div>
   <h2>Open-Source Ham Tooling</h2>
   <p class="prose-lead">Open-source ham-radio tooling on GitHub. Most target the Kenwood TS-990 / FlexRadio integration that drives both shacks.</p>
 
-  <div class="project-grid">
+  <div class="project-list">
 
     <article class="project">
       <div class="project-head">
@@ -208,8 +185,10 @@
         <span class="status status-active">active</span>
       </div>
       <p class="project-desc">C# implementation of the Expert Electronics TCI protocol — talks to FlexRadio / SunSDR. Building blocks for any .NET client that needs RX/TX control over TCI.</p>
-      <div class="project-tags"><span>C#</span><span>TCI</span><span>SDR</span><span>FlexRadio</span></div>
-      <a class="repo-link" href="https://github.com/VU3ESV/TCILibrary" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      <div class="project-meta">
+        <div class="project-tags"><span>C#</span><span>TCI</span><span>SDR</span><span>FlexRadio</span></div>
+        <a class="repo-link" href="https://github.com/VU3ESV/TCILibrary" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      </div>
     </article>
 
     <article class="project">
@@ -219,8 +198,10 @@
         <span class="status status-active">active</span>
       </div>
       <p class="project-desc">TCP server fronting the Kenwood TS-990 / TS-890 serial interface so any networked client can drive the radio. Decouples CAT from a single PC.</p>
-      <div class="project-tags"><span>.NET</span><span>CAT</span><span>Kenwood</span><span>TCP</span></div>
-      <a class="repo-link" href="https://github.com/VU3ESV/KenwoodTCPServer" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      <div class="project-meta">
+        <div class="project-tags"><span>.NET</span><span>CAT</span><span>Kenwood</span><span>TCP</span></div>
+        <a class="repo-link" href="https://github.com/VU3ESV/KenwoodTCPServer" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      </div>
     </article>
 
     <article class="project">
@@ -230,8 +211,10 @@
         <span class="status status-active">active</span>
       </div>
       <p class="project-desc">ESP32 firmware that reads the live band from a Kenwood radio (via the Node-RED TCP server) and switches LPF relays accordingly. Drives the low-pass filter bank without a host PC in the loop.</p>
-      <div class="project-tags"><span>ESP32</span><span>C++</span><span>Hardware</span><span>LPF</span></div>
-      <a class="repo-link" href="https://github.com/VU3ESV/ESP32-BAND-DECODER" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      <div class="project-meta">
+        <div class="project-tags"><span>ESP32</span><span>C++</span><span>Hardware</span><span>LPF</span></div>
+        <a class="repo-link" href="https://github.com/VU3ESV/ESP32-BAND-DECODER" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      </div>
     </article>
 
     <article class="project">
@@ -241,8 +224,10 @@
         <span class="status status-active">active</span>
       </div>
       <p class="project-desc">Node-RED flow that exposes the Kenwood CAT stream over TCP for downstream automation. Pairs with the ESP32 band decoder and the rest of the shack control stack.</p>
-      <div class="project-tags"><span>Node-RED</span><span>MQTT</span><span>CAT</span></div>
-      <a class="repo-link" href="https://github.com/VU3ESV/KENWOOD-TCP-SERVER--NODE-RED" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      <div class="project-meta">
+        <div class="project-tags"><span>Node-RED</span><span>MQTT</span><span>CAT</span></div>
+        <a class="repo-link" href="https://github.com/VU3ESV/KENWOOD-TCP-SERVER--NODE-RED" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      </div>
     </article>
 
     <article class="project">
@@ -252,8 +237,10 @@
         <span class="status status-active">active</span>
       </div>
       <p class="project-desc">Small C++ utility for ESP32 device provisioning. Surfaces the device's Wi-Fi MAC so it can be registered with the access point before the rest of the firmware comes up.</p>
-      <div class="project-tags"><span>ESP32</span><span>C++</span><span>Wi-Fi</span></div>
-      <a class="repo-link" href="https://github.com/VU3ESV/ESP32WifiMacAddressFinder" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      <div class="project-meta">
+        <div class="project-tags"><span>ESP32</span><span>C++</span><span>Wi-Fi</span></div>
+        <a class="repo-link" href="https://github.com/VU3ESV/ESP32WifiMacAddressFinder" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      </div>
     </article>
 
     <article class="project">
@@ -263,15 +250,17 @@
         <span class="status status-fork">fork</span>
       </div>
       <p class="project-desc">Personal fork of John Melton's pihpsdr — Raspberry Pi front-end for HPSDR / Hermes Lite radios. Tracks upstream while carrying local tweaks.</p>
-      <div class="project-tags"><span>C</span><span>Linux</span><span>SDR</span><span>HPSDR</span></div>
-      <a class="repo-link" href="https://github.com/VU3ESV/pihpsdr" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      <div class="project-meta">
+        <div class="project-tags"><span>C</span><span>Linux</span><span>SDR</span><span>HPSDR</span></div>
+        <a class="repo-link" href="https://github.com/VU3ESV/pihpsdr" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      </div>
     </article>
 
   </div>
 </section>
 
 <section id="vu3esv">
-  <div class="section-label"><span class="bracket">[</span> 05 <span class="slash">/</span> SISTER STATION <span class="bracket">]</span></div>
+  <div class="section-label">05 · Sister Station</div>
   <h2>VU3ESV — Bangalore</h2>
   <div class="grid-2">
     <div class="prose">
@@ -279,7 +268,7 @@
       <p>The Bangalore shack is built around a <strong>Kenwood TS-990S</strong> with the home-grown Node-RED / ESP32 automation stack listed in the Projects section above.</p>
       <p>QSL policy is identical: <strong>LOTW only</strong>. Both callsigns log into the same upload pipeline, so confirmation appears in your LOTW account within a day or two of the QSO.</p>
     </div>
-    <div>
+    <aside>
       <dl class="datasheet">
         <div><dt>Callsign</dt><dd>VU3ESV</dd></div>
         <div><dt>Location</dt><dd>Bangalore, India</dd></div>
@@ -287,12 +276,12 @@
         <div><dt>Automation</dt><dd>Node-RED · ESP32</dd></div>
         <div><dt>QSL</dt><dd>LOTW only</dd></div>
       </dl>
-    </div>
+    </aside>
   </div>
 </section>
 
 <section id="contact">
-  <div class="section-label"><span class="bracket">[</span> 06 <span class="slash">/</span> CONTACT <span class="bracket">]</span></div>
+  <div class="section-label">06 · Contact</div>
   <h2>Get in Touch</h2>
   <div class="contact-grid">
     <a class="contact" href="https://www.qrz.com/db/LB9KJ" target="_blank" rel="noopener">
