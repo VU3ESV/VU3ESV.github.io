@@ -1,41 +1,107 @@
 {
-  "updated_iso": "2026-05-08T11:51:13Z",
+  "updated_iso": "2026-05-08T13:14:59Z",
   "spotter": "LB9KJ",
   "max_age_minutes": 15,
-  "count": 3,
+  "count": 9,
   "spots": [
     {
-      "id": 2248676344,
+      "id": 2248693764,
       "spotter": "LB9KJ",
-      "freq": 21040.3,
-      "dx": "RP81GB",
+      "freq": 18075.2,
+      "dx": "SZ113BS",
       "snr": 8,
-      "wpm": 24,
-      "time": "1149z 08 May",
-      "epoch": 1778240967,
+      "wpm": 23,
+      "time": "1313z 08 May",
+      "epoch": 1778246039,
+      "band": "17m"
+    },
+    {
+      "id": 2248692863,
+      "spotter": "LB9KJ",
+      "freq": 14024.7,
+      "dx": "RP81MY",
+      "snr": 8,
+      "wpm": 28,
+      "time": "1309z 08 May",
+      "epoch": 1778245774,
+      "band": "20m"
+    },
+    {
+      "id": 2248692189,
+      "spotter": "LB9KJ",
+      "freq": 21022.3,
+      "dx": "TA6B",
+      "snr": 15,
+      "wpm": 32,
+      "time": "1306z 08 May",
+      "epoch": 1778245611,
       "band": "15m"
     },
     {
-      "id": 2248676055,
+      "id": 2248692188,
       "spotter": "LB9KJ",
-      "freq": 14018.8,
-      "dx": "RP81PK",
-      "snr": 6,
-      "wpm": 29,
-      "time": "1148z 08 May",
-      "epoch": 1778240886,
-      "band": "20m"
+      "freq": 21022.1,
+      "dx": "TA6B",
+      "snr": 15,
+      "wpm": 32,
+      "time": "1306z 08 May",
+      "epoch": 1778245611,
+      "band": "15m"
     },
     {
-      "id": 2248675195,
+      "id": 2248692060,
       "spotter": "LB9KJ",
-      "freq": 14013.5,
-      "dx": "LZ100LZ",
-      "snr": 6,
-      "wpm": 30,
-      "time": "1144z 08 May",
-      "epoch": 1778240651,
-      "band": "20m"
+      "freq": 7025.0,
+      "dx": "DL0MFH",
+      "snr": 14,
+      "wpm": 23,
+      "time": "1306z 08 May",
+      "epoch": 1778245590,
+      "band": "40m"
+    },
+    {
+      "id": 2248692059,
+      "spotter": "LB9KJ",
+      "freq": 7025.0,
+      "dx": "DL0MFH",
+      "snr": 13,
+      "wpm": 23,
+      "time": "1306z 08 May",
+      "epoch": 1778245590,
+      "band": "40m"
+    },
+    {
+      "id": 2248692058,
+      "spotter": "LB9KJ",
+      "freq": 7031.1,
+      "dx": "OV1CDX",
+      "snr": 9,
+      "wpm": 17,
+      "time": "1306z 08 May",
+      "epoch": 1778245590,
+      "band": "40m"
+    },
+    {
+      "id": 2248691838,
+      "spotter": "LB9KJ",
+      "freq": 7031.1,
+      "dx": "OV1CDX",
+      "snr": 8,
+      "wpm": 18,
+      "time": "1305z 08 May",
+      "epoch": 1778245519,
+      "band": "40m"
+    },
+    {
+      "id": 2248690782,
+      "spotter": "LB9KJ",
+      "freq": 10125.0,
+      "dx": "R1NA",
+      "snr": 3,
+      "wpm": 26,
+      "time": "1300z 08 May",
+      "epoch": 1778245203,
+      "band": "30m"
     }
   ]
 }
