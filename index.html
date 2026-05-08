@@ -174,13 +174,39 @@
 <section id="projects">
   <div class="section-label">04 · Projects</div>
   <h2>Open-Source Ham Tooling</h2>
-  <p class="prose-lead">Open-source ham-radio tooling on GitHub. Most target the Kenwood TS-990 / FlexRadio integration that drives both shacks.</p>
+  <p class="prose-lead">Open-source ham-radio tooling on GitHub. SDR clients, CAT control for Kenwood and FlexRadio, ESP32 firmware, and a LAN bridge for the Telepost LP-100A power meter — most of it driving the shacks at home.</p>
 
   <div class="project-list">
 
     <article class="project">
       <div class="project-head">
         <span class="project-idx">01</span>
+        <h3 class="project-name">LP-100A-Server</h3>
+        <span class="status status-active">active</span>
+      </div>
+      <p class="project-desc">WebSocket bridge for the Telepost LP-100A RF power meter. Streams live telemetry to multiple clients over LAN and forwards control verbs back to the meter — so the web UI, the Mac app, and shack automation can all share one meter.</p>
+      <div class="project-meta">
+        <div class="project-tags"><span>HTML</span><span>WebSocket</span><span>LAN</span><span>LP-100A</span></div>
+        <a class="repo-link" href="https://github.com/VU3ESV/LP-100A-Server" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <span class="project-idx">02</span>
+        <h3 class="project-name">LP-100A-App</h3>
+        <span class="status status-active">active</span>
+      </div>
+      <p class="project-desc">Native macOS client for the LP-100A WebSocket Server. Reproduces the server's embedded web UI (Normal + Vector views, SETUP overlay, three control verbs) as a real Mac app.</p>
+      <div class="project-meta">
+        <div class="project-tags"><span>Swift</span><span>macOS</span><span>WebSocket</span><span>LP-100A</span></div>
+        <a class="repo-link" href="https://github.com/VU3ESV/LP-100A-App" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <span class="project-idx">03</span>
         <h3 class="project-name">TCILibrary</h3>
         <span class="status status-active">active</span>
       </div>
@@ -193,7 +219,7 @@
 
     <article class="project">
       <div class="project-head">
-        <span class="project-idx">02</span>
+        <span class="project-idx">04</span>
         <h3 class="project-name">KenwoodTCPServer</h3>
         <span class="status status-active">active</span>
       </div>
@@ -206,20 +232,7 @@
 
     <article class="project">
       <div class="project-head">
-        <span class="project-idx">03</span>
-        <h3 class="project-name">ESP32 Band Decoder</h3>
-        <span class="status status-active">active</span>
-      </div>
-      <p class="project-desc">ESP32 firmware that reads the live band from a Kenwood radio (via the Node-RED TCP server) and switches LPF relays accordingly. Drives the low-pass filter bank without a host PC in the loop.</p>
-      <div class="project-meta">
-        <div class="project-tags"><span>ESP32</span><span>C++</span><span>Hardware</span><span>LPF</span></div>
-        <a class="repo-link" href="https://github.com/VU3ESV/ESP32-BAND-DECODER" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
-      </div>
-    </article>
-
-    <article class="project">
-      <div class="project-head">
-        <span class="project-idx">04</span>
+        <span class="project-idx">05</span>
         <h3 class="project-name">Kenwood TCP Server (Node-RED)</h3>
         <span class="status status-active">active</span>
       </div>
@@ -232,7 +245,20 @@
 
     <article class="project">
       <div class="project-head">
-        <span class="project-idx">05</span>
+        <span class="project-idx">06</span>
+        <h3 class="project-name">ESP32 Band Decoder</h3>
+        <span class="status status-active">active</span>
+      </div>
+      <p class="project-desc">ESP32 firmware that reads the live band from a Kenwood radio (via the Node-RED TCP server) and switches LPF relays accordingly. Drives the low-pass filter bank without a host PC in the loop.</p>
+      <div class="project-meta">
+        <div class="project-tags"><span>ESP32</span><span>C++</span><span>Hardware</span><span>LPF</span></div>
+        <a class="repo-link" href="https://github.com/VU3ESV/ESP32-BAND-DECODER" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <span class="project-idx">07</span>
         <h3 class="project-name">ESP32 Wi-Fi MAC Finder</h3>
         <span class="status status-active">active</span>
       </div>
@@ -245,7 +271,20 @@
 
     <article class="project">
       <div class="project-head">
-        <span class="project-idx">06</span>
+        <span class="project-idx">08</span>
+        <h3 class="project-name">AetherSDR</h3>
+        <span class="status status-fork">fork</span>
+      </div>
+      <p class="project-desc">Linux-native SmartSDR client for FlexRadio (FLEX-6000 / 8600 series). Qt6 + C++20.</p>
+      <div class="project-meta">
+        <div class="project-tags"><span>C++</span><span>Qt6</span><span>Linux</span><span>FlexRadio</span><span>SmartSDR</span></div>
+        <a class="repo-link" href="https://github.com/VU3ESV/AetherSDR" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <span class="project-idx">09</span>
         <h3 class="project-name">pihpsdr (fork)</h3>
         <span class="status status-fork">fork</span>
       </div>
@@ -253,6 +292,19 @@
       <div class="project-meta">
         <div class="project-tags"><span>C</span><span>Linux</span><span>SDR</span><span>HPSDR</span></div>
         <a class="repo-link" href="https://github.com/VU3ESV/pihpsdr" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <span class="project-idx">10</span>
+        <h3 class="project-name">pihpsdr on Apple Silicon</h3>
+        <span class="status status-notes">notes</span>
+      </div>
+      <p class="project-desc">Build notes for compiling and running pihpsdr (with rnnoise, libspecbleach and wdsp) on Apple-Silicon Macs.</p>
+      <div class="project-meta">
+        <div class="project-tags"><span>macOS</span><span>Apple Silicon</span><span>pihpsdr</span><span>Build</span></div>
+        <a class="repo-link" href="https://github.com/VU3ESV/pihpsdr-install-Apple-Silicon" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
       </div>
     </article>
 

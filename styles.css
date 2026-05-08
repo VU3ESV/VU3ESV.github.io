@@ -419,6 +419,7 @@ h2 {
 }
 .status-active { color: var(--green); border-color: rgba(77, 139, 63, 0.30); background: rgba(77, 139, 63, 0.07); }
 .status-fork   { color: var(--amber); border-color: rgba(196, 113, 29, 0.30); background: var(--amber-soft); }
+.status-notes  { color: var(--muted); border-color: var(--border-2); background: var(--surface-2); }
 
 /* ============================================================
    Contact
