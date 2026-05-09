@@ -1,8 +1,13 @@
 name: Update RBN spots
 
+# GitHub Actions throttles scheduled workflows aggressively, so a plain
+# `*/15` cron tends to deliver only ~hourly. Workaround: trigger hourly,
+# but inside the run poll RBN four times with 15-min sleeps. This keeps
+# `data/rbn-spots.json` fresh to within ~15 min regardless of cron lag.
+
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '0 * * * *'
   workflow_dispatch:
   push:
     paths: [.github/workflows/rbn-spots.yml]
@@ -17,12 +22,19 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch RBN spots and write data/rbn-spots.json
+      - name: Poll RBN every 15 min, commit on change
         run: |
-          python3 - <<'PY'
+          set -euo pipefail
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          fetch_and_commit() {
+            python3 - <<'PY'
           import datetime, json, os, re, urllib.request
 
           UA = "vu3esv.github.io RBN updater (github.com/VU3ESV)"
@@ -83,22 +95,31 @@ jobs:
           print(f"Wrote {len(spots)} spots (ver_h={ver})")
           PY
 
-      - name: Commit and push if changed
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Ignore mtime-only changes by diffing the spots array, not updated_iso
-          if [ -f data/rbn-spots.json.prev ]; then rm data/rbn-spots.json.prev; fi
-          if git diff --quiet -- data/rbn-spots.json; then
-            echo "No changes"
-            exit 0
-          fi
-          # Skip commit if only updated_iso changed (no new spots)
-          if git diff -- data/rbn-spots.json | grep -E '^[+-][^+-]' | grep -vqE '"updated_iso"'; then
-            git add data/rbn-spots.json
-            git commit -m "Update RBN spots (auto)"
-            git push
-          else
-            echo "Only timestamp changed; skipping commit"
-            git checkout -- data/rbn-spots.json
-          fi
+            # Pull in case another push landed (e.g. ad-hoc workflow_dispatch).
+            git pull --rebase --autostash origin main || true
+
+            if git diff --quiet -- data/rbn-spots.json; then
+              echo "No diff."
+              return 0
+            fi
+            # Skip commit if only updated_iso changed (no new spots).
+            if git diff -- data/rbn-spots.json | grep -E '^[+-][^+-]' | grep -vqE '"updated_iso"'; then
+              git add data/rbn-spots.json
+              git commit -m "Update RBN spots (auto)"
+              git push origin main
+              echo "Committed."
+            else
+              git checkout -- data/rbn-spots.json
+              echo "Only timestamp changed; skipped."
+            fi
+          }
+
+          for i in 1 2 3 4; do
+            echo "::group::Poll $i / 4"
+            fetch_and_commit
+            echo "::endgroup::"
+            if [ $i -lt 4 ]; then
+              echo "Sleeping 15 minutes before next poll..."
+              sleep 900
+            fi
+          done
