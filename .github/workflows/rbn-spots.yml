@@ -93,24 +93,27 @@ jobs:
           print(f"Wrote {len(spots)} spots (ver_h={ver})")
           PY
 
-      - name: Commit and push if spots changed
+      - name: Commit and push every poll
         run: |
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Always commit so updated_iso reflects the last poll, not just the
+          # last spot change. This gives the page an honest liveness indicator.
           if git diff --quiet -- data/rbn-spots.json; then
-            echo "No diff."
+            echo "No diff (file identical down to whitespace) — nothing to do."
             exit 0
           fi
-          # Skip commit if only updated_iso changed (no new spots).
+
+          # Detect whether any spots actually changed so the commit message is informative.
           if git diff -- data/rbn-spots.json | grep -E '^[+-][^+-]' | grep -vqE '"updated_iso"'; then
-            git add data/rbn-spots.json
-            git commit -m "Update RBN spots (auto)"
-            git pull --rebase --autostash origin main || true
-            git push origin main
-            echo "Committed."
+            MSG="Update RBN spots (auto)"
           else
-            git checkout -- data/rbn-spots.json
-            echo "Only timestamp changed; skipped."
+            MSG="Update RBN poll timestamp (auto)"
           fi
+
+          git add data/rbn-spots.json
+          git commit -m "$MSG"
+          git pull --rebase --autostash origin main || true
+          git push origin main
