@@ -1,7 +1,30 @@
 {
-  "updated_iso": "2026-05-08T23:37:05Z",
+  "updated_iso": "2026-05-09T01:21:36Z",
   "spotter": "LB9KJ",
   "max_age_minutes": 15,
-  "count": 0,
-  "spots": []
+  "count": 2,
+  "spots": [
+    {
+      "id": 2248905381,
+      "spotter": "LB9KJ",
+      "freq": 7026.5,
+      "dx": "I1MMR",
+      "snr": 17,
+      "wpm": 17,
+      "time": "0116z 09 May",
+      "epoch": 1778289407,
+      "band": "40m"
+    },
+    {
+      "id": 2248905324,
+      "spotter": "LB9KJ",
+      "freq": 7026.5,
+      "dx": "I1MMR",
+      "snr": 17,
+      "wpm": 17,
+      "time": "0115z 09 May",
+      "epoch": 1778289356,
+      "band": "40m"
+    }
+  ]
 }
