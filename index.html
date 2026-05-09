@@ -389,39 +389,52 @@
 </main>
 
 <script>
-(async () => {
+(() => {
   const meta = document.getElementById('rbn-meta');
   const tbody = document.querySelector('#rbn-table tbody');
   if (!meta || !tbody) return;
+
+  // Fetch directly from raw.githubusercontent.com so the page reflects the
+  // latest cron-pushed JSON without waiting for a Pages redeploy.
+  const RAW_URL = 'https://raw.githubusercontent.com/VU3ESV/VU3ESV.github.io/main/data/rbn-spots.json';
+  const FETCH_INTERVAL_MS = 60_000;
+  const TICK_INTERVAL_MS  = 10_000;
+
+  let lastData = null;
 
   const esc = s => String(s).replace(/[&<>"']/g, c => (
     {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]
   ));
 
-  const fmtUpdated = iso => {
+  const fmtAgo = iso => {
     if (!iso) return '—';
     const d = new Date(iso);
     if (isNaN(d)) return iso;
-    const mins = Math.max(0, Math.round((Date.now() - d.getTime()) / 60000));
-    if (mins < 1) return 'just now';
-    if (mins === 1) return '1 min ago';
-    if (mins < 60) return mins + ' min ago';
-    const h = Math.floor(mins / 60);
-    return h + ' h ago';
+    const secs = Math.max(0, Math.round((Date.now() - d.getTime()) / 1000));
+    if (secs < 30)  return 'just now';
+    if (secs < 90)  return '1 min ago';
+    if (secs < 3600) return Math.round(secs / 60) + ' min ago';
+    const h = Math.floor(secs / 3600);
+    return h === 1 ? '1 h ago' : h + ' h ago';
   };
 
-  try {
-    const r = await fetch('data/rbn-spots.json?_=' + Date.now(), { cache: 'no-store' });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    const d = await r.json();
-
+  const renderMeta = () => {
+    if (!lastData) return;
+    const d = lastData;
     if (!d.spots || !d.spots.length) {
-      meta.textContent = 'No spots in the last ' + (d.max_age_minutes || 15) + ' min · last fetched ' + fmtUpdated(d.updated_iso);
-      tbody.innerHTML = '<tr><td colspan="6" class="rbn-empty">No spots</td></tr>';
+      meta.textContent = 'No spots in the last ' + (d.max_age_minutes || 15) + ' min · last fetched ' + fmtAgo(d.updated_iso);
+    } else {
+      meta.innerHTML = '<strong>' + d.count + '</strong> spots · last fetched ' + esc(fmtAgo(d.updated_iso));
+    }
+  };
+
+  const renderTable = () => {
+    if (!lastData) return;
+    const d = lastData;
+    if (!d.spots || !d.spots.length) {
+      tbody.innerHTML = '<tr><td colspan="6" class="rbn-empty">No spots in the last ' + (d.max_age_minutes || 15) + ' min</td></tr>';
       return;
     }
-
-    meta.innerHTML = '<strong>' + d.count + '</strong> spots · last fetched ' + esc(fmtUpdated(d.updated_iso));
     tbody.innerHTML = d.spots.map(s => (
       '<tr>' +
         '<td><a href="https://www.qrz.com/db/' + encodeURIComponent(s.dx) + '" target="_blank" rel="noopener">' + esc(s.dx) + '</a></td>' +
@@ -432,10 +445,33 @@
         '<td class="num">' + esc(s.time) + '</td>' +
       '</tr>'
     )).join('');
-  } catch (e) {
-    meta.textContent = 'Could not load spots: ' + e.message;
-    tbody.innerHTML = '<tr><td colspan="6" class="rbn-empty">No data</td></tr>';
-  }
+  };
+
+  const fetchOnce = async () => {
+    try {
+      const r = await fetch(RAW_URL + '?_=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const next = await r.json();
+      const changed = !lastData || lastData.updated_iso !== next.updated_iso;
+      lastData = next;
+      renderMeta();
+      if (changed) renderTable();
+    } catch (e) {
+      if (!lastData) {
+        meta.textContent = 'Could not load spots: ' + e.message;
+        tbody.innerHTML = '<tr><td colspan="6" class="rbn-empty">No data</td></tr>';
+      }
+    }
+  };
+
+  fetchOnce();
+  setInterval(fetchOnce, FETCH_INTERVAL_MS);
+  setInterval(renderMeta, TICK_INTERVAL_MS);
+
+  // Re-fetch when the tab regains focus, so a returning user gets fresh data.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') fetchOnce();
+  });
 })();
 </script>
 

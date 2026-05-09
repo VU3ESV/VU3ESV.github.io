@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'data/**'
+      - '.github/workflows/rbn-spots.yml'
   workflow_dispatch:
 
 permissions:
