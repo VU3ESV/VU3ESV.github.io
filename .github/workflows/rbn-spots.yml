@@ -1,13 +1,16 @@
 name: Update RBN spots
 
-# GitHub Actions throttles scheduled workflows aggressively, so a plain
-# `*/15` cron tends to deliver only ~hourly. Workaround: trigger hourly,
-# but inside the run poll RBN four times with 15-min sleeps. This keeps
-# `data/rbn-spots.json` fresh to within ~15 min regardless of cron lag.
+# Runs every 5 minutes and pulls the last 15 minutes of spots produced
+# by LB9KJ as a CW Skimmer node on the Reverse Beacon Network.
+#
+# GitHub Actions cron is best-effort and is often throttled — actual
+# delivery interval may be longer than the configured 5 min during
+# busy periods. The page polls raw.githubusercontent.com every 60s,
+# so it will reflect each commit within ~1 min of it landing on main.
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
   push:
     paths: [.github/workflows/rbn-spots.yml]
@@ -22,19 +25,13 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 55
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
 
-      - name: Poll RBN every 15 min, commit on change
+      - name: Fetch RBN spots and write data/rbn-spots.json
         run: |
-          set -euo pipefail
-
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          fetch_and_commit() {
-            python3 - <<'PY'
+          python3 - <<'PY'
           import datetime, json, os, re, urllib.request
 
           UA = "vu3esv.github.io RBN updater (github.com/VU3ESV)"
@@ -64,6 +61,7 @@ jobs:
           m = re.search(r'RBN_version_hash\s*=\s*"([a-f0-9]+)"', page)
           ver = m.group(1) if m else "6a2ffe"
 
+          # ma=900 → last 15 minutes; r=100 → up to 100 rows
           raw = json.loads(get(f"https://www.reversebeacon.net/spots.php?h={ver}&cde=LB9KJ&ma=900&s=0&r=100"))
 
           spots = []
@@ -95,31 +93,24 @@ jobs:
           print(f"Wrote {len(spots)} spots (ver_h={ver})")
           PY
 
-            # Pull in case another push landed (e.g. ad-hoc workflow_dispatch).
+      - name: Commit and push if spots changed
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet -- data/rbn-spots.json; then
+            echo "No diff."
+            exit 0
+          fi
+          # Skip commit if only updated_iso changed (no new spots).
+          if git diff -- data/rbn-spots.json | grep -E '^[+-][^+-]' | grep -vqE '"updated_iso"'; then
+            git add data/rbn-spots.json
+            git commit -m "Update RBN spots (auto)"
             git pull --rebase --autostash origin main || true
-
-            if git diff --quiet -- data/rbn-spots.json; then
-              echo "No diff."
-              return 0
-            fi
-            # Skip commit if only updated_iso changed (no new spots).
-            if git diff -- data/rbn-spots.json | grep -E '^[+-][^+-]' | grep -vqE '"updated_iso"'; then
-              git add data/rbn-spots.json
-              git commit -m "Update RBN spots (auto)"
-              git push origin main
-              echo "Committed."
-            else
-              git checkout -- data/rbn-spots.json
-              echo "Only timestamp changed; skipped."
-            fi
-          }
-
-          for i in 1 2 3 4; do
-            echo "::group::Poll $i / 4"
-            fetch_and_commit
-            echo "::endgroup::"
-            if [ $i -lt 4 ]; then
-              echo "Sleeping 15 minutes before next poll..."
-              sleep 900
-            fi
-          done
+            git push origin main
+            echo "Committed."
+          else
+            git checkout -- data/rbn-spots.json
+            echo "Only timestamp changed; skipped."
+          fi
