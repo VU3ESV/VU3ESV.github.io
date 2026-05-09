@@ -33,7 +33,6 @@
       <a href="#about">About</a>
       <a href="#station">Station</a>
       <a href="#log">Log</a>
-      <a href="#rbn">Spots</a>
       <a href="#projects">Projects</a>
       <a href="#vu3esv">VU3ESV</a>
       <a href="#contact">Contact</a>
@@ -168,41 +167,15 @@
       <a class="link-row" href="https://lotw.arrl.org/" target="_blank" rel="noopener">
         <span>Logbook of The World</span><span class="arrow">→</span>
       </a>
+      <a class="link-row" href="https://www.reversebeacon.net/main.php?spotter_call=LB9KJ&amp;rows=100&amp;max_age=15,minutes" target="_blank" rel="noopener">
+        <span>Live RBN spots · LB9KJ</span><span class="arrow">→</span>
+      </a>
     </div>
   </div>
 </section>
 
-<section id="rbn">
-  <div class="section-label">04 · Live RBN Spots</div>
-  <h2>Live Skimmer — LB9KJ</h2>
-  <p class="prose-lead">Spots produced by <strong>LB9KJ</strong> as a CW Skimmer node on the <a href="https://www.reversebeacon.net/main.php?spotter_call=LB9KJ" target="_blank" rel="noopener">Reverse Beacon Network</a>. Last 15 minutes of decoded CW activity from this end. The list refreshes every ~15 min via a scheduled fetch.</p>
-
-  <div class="rbn-meta" id="rbn-meta">Loading spots…</div>
-  <div class="rbn-table-wrap">
-    <table class="rbn-table" id="rbn-table">
-      <thead>
-        <tr>
-          <th>DX</th>
-          <th class="num">Freq (kHz)</th>
-          <th>Band</th>
-          <th class="num">SNR (dB)</th>
-          <th class="num">WPM</th>
-          <th class="num">UTC</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td colspan="6" class="rbn-empty">Loading…</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="rbn-source">
-    Source: <a href="https://www.reversebeacon.net/main.php?spotter_call=LB9KJ&amp;rows=100&amp;max_age=15,minutes" target="_blank" rel="noopener">reversebeacon.net</a>
-    · <a href="data/rbn-spots.json">JSON</a>
-  </p>
-</section>
-
 <section id="projects">
-  <div class="section-label">05 · Projects</div>
+  <div class="section-label">04 · Projects</div>
   <h2>Open-Source Ham Tooling</h2>
   <p class="prose-lead">Open-source ham-radio tooling on GitHub. SDR clients, CAT control for Kenwood and FlexRadio, ESP32 firmware, and a LAN bridge for the Telepost LP-100A power meter — most of it driving the shacks at home.</p>
 
@@ -342,7 +315,7 @@
 </section>
 
 <section id="vu3esv">
-  <div class="section-label">06 · Sister Station</div>
+  <div class="section-label">05 · Sister Station</div>
   <h2>VU3ESV — Bangalore</h2>
   <div class="grid-2">
     <div class="prose">
@@ -363,7 +336,7 @@
 </section>
 
 <section id="contact">
-  <div class="section-label">07 · Contact</div>
+  <div class="section-label">06 · Contact</div>
   <h2>Get in Touch</h2>
   <div class="contact-grid">
     <a class="contact" href="https://www.qrz.com/db/LB9KJ" target="_blank" rel="noopener">
@@ -387,93 +360,6 @@
 </section>
 
 </main>
-
-<script>
-(() => {
-  const meta = document.getElementById('rbn-meta');
-  const tbody = document.querySelector('#rbn-table tbody');
-  if (!meta || !tbody) return;
-
-  // Fetch directly from raw.githubusercontent.com so the page reflects the
-  // latest cron-pushed JSON without waiting for a Pages redeploy.
-  const RAW_URL = 'https://raw.githubusercontent.com/VU3ESV/VU3ESV.github.io/main/data/rbn-spots.json';
-  const FETCH_INTERVAL_MS = 60_000;
-  const TICK_INTERVAL_MS  = 10_000;
-
-  let lastData = null;
-
-  const esc = s => String(s).replace(/[&<>"']/g, c => (
-    {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]
-  ));
-
-  const fmtAgo = iso => {
-    if (!iso) return '—';
-    const d = new Date(iso);
-    if (isNaN(d)) return iso;
-    const secs = Math.max(0, Math.round((Date.now() - d.getTime()) / 1000));
-    if (secs < 30)  return 'just now';
-    if (secs < 90)  return '1 min ago';
-    if (secs < 3600) return Math.round(secs / 60) + ' min ago';
-    const h = Math.floor(secs / 3600);
-    return h === 1 ? '1 h ago' : h + ' h ago';
-  };
-
-  const renderMeta = () => {
-    if (!lastData) return;
-    const d = lastData;
-    if (!d.spots || !d.spots.length) {
-      meta.textContent = 'No spots in the last ' + (d.max_age_minutes || 15) + ' min · last fetched ' + fmtAgo(d.updated_iso);
-    } else {
-      meta.innerHTML = '<strong>' + d.count + '</strong> spots · last fetched ' + esc(fmtAgo(d.updated_iso));
-    }
-  };
-
-  const renderTable = () => {
-    if (!lastData) return;
-    const d = lastData;
-    if (!d.spots || !d.spots.length) {
-      tbody.innerHTML = '<tr><td colspan="6" class="rbn-empty">No spots in the last ' + (d.max_age_minutes || 15) + ' min</td></tr>';
-      return;
-    }
-    tbody.innerHTML = d.spots.map(s => (
-      '<tr>' +
-        '<td><a href="https://www.qrz.com/db/' + encodeURIComponent(s.dx) + '" target="_blank" rel="noopener">' + esc(s.dx) + '</a></td>' +
-        '<td class="num">' + s.freq.toFixed(1) + '</td>' +
-        '<td><span class="band-pill">' + esc(s.band) + '</span></td>' +
-        '<td class="num">' + s.snr + '</td>' +
-        '<td class="num">' + s.wpm + '</td>' +
-        '<td class="num">' + esc(s.time) + '</td>' +
-      '</tr>'
-    )).join('');
-  };
-
-  const fetchOnce = async () => {
-    try {
-      const r = await fetch(RAW_URL + '?_=' + Date.now(), { cache: 'no-store' });
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      const next = await r.json();
-      const changed = !lastData || lastData.updated_iso !== next.updated_iso;
-      lastData = next;
-      renderMeta();
-      if (changed) renderTable();
-    } catch (e) {
-      if (!lastData) {
-        meta.textContent = 'Could not load spots: ' + e.message;
-        tbody.innerHTML = '<tr><td colspan="6" class="rbn-empty">No data</td></tr>';
-      }
-    }
-  };
-
-  fetchOnce();
-  setInterval(fetchOnce, FETCH_INTERVAL_MS);
-  setInterval(renderMeta, TICK_INTERVAL_MS);
-
-  // Re-fetch when the tab regains focus, so a returning user gets fresh data.
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') fetchOnce();
-  });
-})();
-</script>
 
 <footer>
   <div class="footer-row">
